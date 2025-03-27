@@ -1,0 +1,129 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="format-detection" content="email=no"/>
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/mobile.common.css" />
+<link rel="stylesheet" type="text/css" href="css/premium.feature.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<title>高级功能</title>
+</head>
+<body class="zh_cn">
+<div class="main">
+	<div class="inner">
+		<ul>
+			<li>
+				<i class="premium1"></i>
+				<a class="title"><b><span>将整个文档所有页OCR（识别图片上的文字）结果与备注，导出为一个.txt文件</b></span></a>
+			</li>
+			<li>
+				<i class="premium2"></i>
+				<a class="title"><b><span>使用拼图功能，将多张文档页拼接到一张A4纸上</span></b></a>
+			</li>
+			<li style="display:none;">
+				<i class="premium3"></i>
+				<a class="title"><b><span>使用文档保险柜功能，严密保护私密文档</span></b></a>
+			</li>
+			<li>
+				<i class="premium4"></i>
+				<a class="title"><b><span>云存储空间增加10G</span></b></a>
+			</li>
+			<li>
+				<i class="premium5"></i>
+				<a class="title"><b><span>共享文档时，最多可邀请好友人数增加40人</span></b></a>
+			</li>
+			<li>
+				<i class="premium6"></i>
+				<a class="title"><b><span>在www.camscanner.com一次下载多个PDF文档</span></b></a>
+			</li>
+
+			<li>
+				<i class="premium7"></i>
+				<a class="title"><b><span>以加密链接形式分享文档时，可设定链接的过期时间</b></span></a>
+			</li>
+			<li>
+				<i class="premium8"></i>
+				<a class="title"><b>
+					<span id='premium8_ios' style='display:none'>自动上传文档至Box、Google Drive、Dropbox、Evernote</span>
+					<span id='premium8_android' >自动上传文档至Box、Google Drive、Dropbox、Evernote、OneDrive</span>
+				</b></a>
+			</li>
+			
+			<li class="more">
+				<i class="premium9"></i>
+				<a class="title" href="#premium9"><b><span>享受注册用户所有权利 <u class="toggle"></u></span></b></a>
+			</li>
+			<li class="premium_desc">
+				<ul>
+					<li><b>输入图片上文字，一键搜索文档</b></li>
+					<li><b>在手机、平板、电脑上同步文档数据</b></li>
+					<li><b>共享文档，邀请好友一起查看、评论文档</b></li>
+					<li><b>在 www.camscanner.com 管理文档</b></li>
+					<li><b>在不同手机、平板上共用一个传真帐户</b></li>
+				</ul>
+			</li>
+			
+			<li class="more">
+				<i class="premium10"></i>
+				<a class="title more" href="#premium10"><b><span>享受收费版所有功能 <u class="toggle"></u></span></b></a>
+			</li>
+			<li class="premium_desc">
+				<ul>
+					<li><b>所有页面无广告</b></li>
+					<li><b>生成的PDF无广告</b></li>
+					<li><b>编辑文档中单个页的OCR结果（图片上的文字），导出为.txt文本</b></li>
+				</ul>
+			</li>
+		
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+$(function() {
+	var etag;
+	var ua = navigator.userAgent;
+
+	try {
+		etag = iu.supports.touch ? 'touchstart' : 'click';
+	} catch(e) {
+		etag = 'click';
+	}
+
+	if(/iPad/i.test(ua) || /iPhone/i.test(ua)){
+		$('#premium8_ios').show();
+		$('#premium8_android').hide();
+	}
+
+	$('.more').bind(etag, function() {
+		var li = $(this).next(), toggle = $(this).find('.toggle');
+		if (li.hasClass('open')) {
+			li.hide();
+			(function() {
+				li.removeClass('open');
+				toggle.removeClass('active');
+			})();
+		} else {
+			li.slideDown(function() {
+				li.addClass('open');
+				toggle.addClass('active');
+				$(document.body, document.documentElement).animate({
+					scrollTop : iu.tool.bodyScrollTop() + (parseInt(li.attr('data-height')) || 0)
+				});
+			});
+		}
+	});
+
+	$('.premium_desc').each(function() {
+		$(this).attr('data-height', $(this).height() - 10);
+	});
+});
+</script>
+<script type="text/javascript" src="js/iu.base.js"></script>
+</body>
+</html>

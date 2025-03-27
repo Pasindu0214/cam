@@ -1,0 +1,131 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="format-detection" content="email=no"/>
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/mobile.common.css" />
+<link rel="stylesheet" type="text/css" href="css/premium.feature.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<title>高级功能</title>
+</head>
+<body class="zh_cn">
+<div class="main">
+	<div class="inner">
+		<ul>
+			<li>
+				<i class="premium1"></i>
+				<a class="title"><b><span>Edite os resultados do OCR e as notas de todo o documento, exportando como ficheiro .txt</b></span></a>
+			</li>
+			<li>
+				<i class="premium2"></i>
+				<a class="title"><b><span>Faça colagens de documentos com múltiplas páginas</span></b></a>
+			</li>
+			<li style="display:none;">
+				<i class="premium3"></i>
+				<a class="title"><b><span></span></b></a>
+			</li>
+			<li>
+				<i class="premium4"></i>
+				<a class="title"><b><span>Adicione 10 Gb de espaço na nuvem</span></b></a>
+			</li>
+			<li>
+				<i class="premium5"></i>
+				<a class="title"><b><span>Acrescente 40 colaboradores extra</span></b></a>
+			</li>
+			<li>
+				<i class="premium6"></i>
+				<a class="title"><b><span>Descarregue lotes de ficheiros PDF na aplicação Web (www.camscanner.com)</span></b></a>
+			</li>
+
+			<li>
+				<i class="premium7"></i>
+				<a class="title"><b><span>Envie um link do documento, protegido por palavra-passe e data de validade</b></span></a>
+			</li>
+
+			<li>
+				<i class="premium8"></i>
+				<a class="title"><b>
+					<span id='premium8_ios' style='display:none'>Faça o carregamento automático para Box, Google Drive, Dropbox e Evernote</span>
+					<span id='premium8_android' >Faça o carregamento automático para Box, Google Drive, Dropbox, Evernote e OneDrive</span>
+				</b></a>
+			</li>
+			
+			<li class="more">
+				<i class="premium9"></i>
+				<a class="title" href="#premium9"><b><span>Todos os benefícios de ser membro <u class="toggle"></u></span></b></a>
+			</li>
+			<li class="premium_desc">
+				<ul>
+					<li><b>Procure textos dentro das imagens</b></li>
+					<li><b>Sincronize documentos entre smartpones, tablets e computadores</b></li>
+					<li><b>Convide amigos ou colegas para ver e comentar as suas digitalizações</b></li>
+					<li><b>Faça a gestão dos seus documentos em www.camscanner.com</b></li>
+					<li><b>Partilhe o saldo de faxes entre smartphones e tablets</b></li>
+				</ul>
+			</li>
+			
+			<li class="more">
+				<i class="premium10"></i>
+				<a class="title more" href="#premium10"><b><span>que a aplicação paga tem para oferecer <u class="toggle"></u></span></b></a>
+			</li>
+			<li class="premium_desc">
+				<ul>
+					<li><b>Sem anúncios</b></li>
+					<li><b>Sem marcas de água</b></li>
+					<li><b>Edite os resultados do OCR de qualquer página individual do documento e exporte como ficheiro .txt</b></li>
+				</ul>
+			</li>
+
+		
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+$(function() {
+	var etag;
+	var ua = navigator.userAgent;
+
+	try {
+		etag = iu.supports.touch ? 'touchstart' : 'click';
+	} catch(e) {
+		etag = 'click';
+	}
+
+	if(/iPad/i.test(ua) || /iPhone/i.test(ua)){
+		$('#premium8_ios').show();
+		$('#premium8_android').hide();
+	}
+
+	$('.more').bind(etag, function() {
+		var li = $(this).next(), toggle = $(this).find('.toggle');
+		if (li.hasClass('open')) {
+			li.hide();
+			(function() {
+				li.removeClass('open');
+				toggle.removeClass('active');
+			})();
+		} else {
+			li.slideDown(function() {
+				li.addClass('open');
+				toggle.addClass('active');
+				$(document.body, document.documentElement).animate({
+					scrollTop : iu.tool.bodyScrollTop() + (parseInt(li.attr('data-height')) || 0)
+				});
+			});
+		}
+	});
+
+	$('.premium_desc').each(function() {
+		$(this).attr('data-height', $(this).height() - 10);
+	});
+});
+</script>
+<script type="text/javascript" src="js/iu.base.js"></script>
+</body>
+</html>

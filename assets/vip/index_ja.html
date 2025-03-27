@@ -1,0 +1,134 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="format-detection" content="email=no"/>
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/mobile.common.css" />
+<link rel="stylesheet" type="text/css" href="css/premium.feature.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<title>Go Premium</title>
+</head>
+<body class="zh_cn">
+<div class="main">
+	<div class="inner">
+		<ul>
+			<li>
+				<i class="premium1"></i>
+				<a class="title"><b><span>ドキュメントの全ページのOCR結果（画像上の文字）及びメモ内容を.txtファイルにエクスポート</b></span></a>
+			</li>
+			<li>
+				<i class="premium2"></i>
+				<a class="title"><b><span>コラージュ機能で複数のドキュメントページを一つのA4ページに統合</span></b></a>
+			</li>
+			<li style="display:none;">
+				<i class="premium3"></i>
+				<a class="title"><b><span></span></b></a>
+			</li>
+			<li>
+				<i class="premium4"></i>
+				<a class="title"><b><span>10Gものクラウドストレージをプレゼント</span></b></a>
+			</li>
+			<li>
+				<i class="premium5"></i>
+				<a class="title"><b><span>ドキュメント共有の最大人数を40人追加</span></b></a>
+			</li>
+			<li>
+				<i class="premium6"></i>
+				<a class="title"><b><span>www.camscanner.comから複数のPDFファイルを一括ダウンロード</span></b></a>
+			</li>
+
+			<li>
+				<i class="premium7"></i>
+				<a class="title"><b><span>有効期限付きの暗号化リンクでドキュメントを安全に共有</b></span></a>
+			</li>
+
+
+
+			<li>
+				<i class="premium8"></i>
+				<a class="title"><b>
+				<span id='premium8_ios' style='display:none'>ドキュメントを自動でGoogleDrive、Dropbox、Box、Evernoteにアップロー</span>
+					<span id='premium8_android' >ドキュメントを自動でGoogleDrive、Dropbox、Box、Evernote、OneDriveにアップロー</span>
+				</b></a>
+			</li>
+			
+			<li class="more">
+				<i class="premium9"></i>
+				<a class="title" href="#premium9"><b><span>登録ユーザーの全ての権利を享受 <u class="toggle"></u></span></b></a>
+			</li>
+			<li class="premium_desc">
+				<ul>
+					<li><b>画像上の文字を入力し、ワンタッチ検索</b></li>
+					<li><b>携帯電話、タブレット、パソコンでドキュメントデータを同期</b></li>
+					<li><b>ドキュメントを共有、友達と確認・評価</b></li>
+					<li><b>www.camscanner.comにてドキュメントを管理</b></li>
+					<li><b>異なる携帯電話やタブレットで同じFAXアカウントを利用</b></li>
+				</ul>
+			</li>
+			
+			<li class="more">
+				<i class="premium10"></i>
+				<a class="title more" href="#premium10"><b><span>完全版の全ての機能を享受 <u class="toggle"></u></span></b></a>
+			</li>
+			<li class="premium_desc">
+				<ul>
+					<li><b>全ての画面に広告無し</b></li>
+					<li><b>透かしなしのPDF作成</b></li>
+					<li><b>ドキュメント中の1頁のOCR結果（画像上の文字）を編集して.txt形式でエクスポート</b></li>
+				</ul>
+			</li>
+
+
+		
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+$(function() {
+	var etag;
+	var ua = navigator.userAgent;
+
+	try {
+		etag = iu.supports.touch ? 'touchstart' : 'click';
+	} catch(e) {
+		etag = 'click';
+	}
+
+	if(/iPad/i.test(ua) || /iPhone/i.test(ua)){
+		$('#premium8_ios').show();
+		$('#premium8_android').hide();
+	}
+
+	$('.more').bind(etag, function() {
+		var li = $(this).next(), toggle = $(this).find('.toggle');
+		if (li.hasClass('open')) {
+			li.hide();
+			(function() {
+				li.removeClass('open');
+				toggle.removeClass('active');
+			})();
+		} else {
+			li.slideDown(function() {
+				li.addClass('open');
+				toggle.addClass('active');
+				$(document.body, document.documentElement).animate({
+					scrollTop : iu.tool.bodyScrollTop() + (parseInt(li.attr('data-height')) || 0)
+				});
+			});
+		}
+	});
+
+	$('.premium_desc').each(function() {
+		$(this).attr('data-height', $(this).height() - 10);
+	});
+});
+</script>
+<script type="text/javascript" src="js/iu.base.js"></script>
+</body>
+</html>

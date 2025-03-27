@@ -1,0 +1,4 @@
+/* mobile.common.css */
+/* hide select-menu */
+*{-webkit-user-select:none;-ms-user-select:none;user-select:initial;-webkit-tap-highlight-color:transparent;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+input,textarea,select,img,a,.native_menu{-webkit-user-select:initial;-ms-user-select:initial;user-select:initial;}
